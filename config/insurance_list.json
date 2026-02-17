@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "description": "Standardized insurance provider names for DC, MD, VA region",
+    "last_updated": "2026-02-17",
+    "notes": "Used for matching scraped insurance data to canonical names"
+  },
+  "insurance_providers": [
+    {
+      "canonical_name": "Aetna",
+      "aliases": ["aetna", "aetna behavioral health", "aetna better health", "aetna hmo", "aetna ppo", "aetna eap"]
+    },
+    {
+      "canonical_name": "Anthem",
+      "aliases": ["anthem", "anthem blue cross", "anthem bcbs", "anthem behavioral health", "anthem eap"]
+    },
+    {
+      "canonical_name": "BlueCross BlueShield",
+      "aliases": ["bcbs", "blue cross", "blue shield", "blue cross blue shield", "bluecross blueshield", "bcbs federal", "fep blue", "federal employee program"]
+    },
+    {
+      "canonical_name": "CareFirst",
+      "aliases": ["carefirst", "carefirst bcbs", "carefirst blue cross", "carefirst bluechoice", "carefirst administrators"]
+    },
+    {
+      "canonical_name": "Cigna",
+      "aliases": ["cigna", "cigna behavioral health", "cigna eap", "evernorth", "cigna hmo", "cigna ppo", "cigna open access"]
+    },
+    {
+      "canonical_name": "Humana",
+      "aliases": ["humana", "humana behavioral health", "humana military", "humana gold", "humana eap"]
+    },
+    {
+      "canonical_name": "Kaiser Permanente",
+      "aliases": ["kaiser", "kaiser permanente", "kp"]
+    },
+    {
+      "canonical_name": "Magellan",
+      "aliases": ["magellan", "magellan health", "magellan behavioral health", "magellan healthcare"]
+    },
+    {
+      "canonical_name": "Medicaid",
+      "aliases": ["medicaid", "dc medicaid", "maryland medicaid", "virginia medicaid", "medicaid managed care", "amerihealth caritas", "priority partners", "maryland physicians care", "jai medical", "molina medicaid"]
+    },
+    {
+      "canonical_name": "Medicare",
+      "aliases": ["medicare", "medicare part b", "medicare advantage", "medicare supplement", "medigap"]
+    },
+    {
+      "canonical_name": "Tricare",
+      "aliases": ["tricare", "tricare prime", "tricare select", "tricare for life", "tricare east", "military insurance", "champva"]
+    },
+    {
+      "canonical_name": "UnitedHealthcare",
+      "aliases": ["uhc", "united healthcare", "unitedhealthcare", "united behavioral health", "ubh", "optum", "optum behavioral", "optum eap", "uhc community plan"]
+    },
+    {
+      "canonical_name": "Amerigroup",
+      "aliases": ["amerigroup", "amerigroup virginia", "amerigroup maryland", "amerigroup community care"]
+    },
+    {
+      "canonical_name": "Beacon Health",
+      "aliases": ["beacon", "beacon health", "beacon health options", "beacon health strategies"]
+    },
+    {
+      "canonical_name": "Behavioral Health Systems",
+      "aliases": ["bhs", "behavioral health systems"]
+    },
+    {
+      "canonical_name": "Compsych",
+      "aliases": ["compsych", "compsych eap", "guidance resources"]
+    },
+    {
+      "canonical_name": "First Choice Health",
+      "aliases": ["first choice", "first choice health"]
+    },
+    {
+      "canonical_name": "Geisinger",
+      "aliases": ["geisinger", "geisinger health plan"]
+    },
+    {
+      "canonical_name": "Highmark",
+      "aliases": ["highmark", "highmark bcbs", "highmark blue cross", "highmark blue shield"]
+    },
+    {
+      "canonical_name": "Horizon BCBS",
+      "aliases": ["horizon", "horizon bcbs", "horizon blue cross"]
+    },
+    {
+      "canonical_name": "Johns Hopkins EHP",
+      "aliases": ["johns hopkins", "ehp", "johns hopkins ehp", "employer health programs"]
+    },
+    {
+      "canonical_name": "Lyra Health",
+      "aliases": ["lyra", "lyra health", "lyra eap"]
+    },
+    {
+      "canonical_name": "MedStar Family Choice",
+      "aliases": ["medstar", "medstar family choice"]
+    },
+    {
+      "canonical_name": "Molina Healthcare",
+      "aliases": ["molina", "molina healthcare"]
+    },
+    {
+      "canonical_name": "MultiPlan",
+      "aliases": ["multiplan", "multi plan", "multiplan network"]
+    },
+    {
+      "canonical_name": "Oxford Health",
+      "aliases": ["oxford", "oxford health", "oxford health plans"]
+    },
+    {
+      "canonical_name": "PHCS",
+      "aliases": ["phcs", "private healthcare systems"]
+    },
+    {
+      "canonical_name": "Sentara Health Plans",
+      "aliases": ["sentara", "sentara health", "optima health"]
+    },
+    {
+      "canonical_name": "Virginia Premier",
+      "aliases": ["virginia premier", "va premier"]
+    },
+    {
+      "canonical_name": "Out-of-Network",
+      "aliases": ["out of network", "oon", "out-of-network", "ooh network"]
+    },
+    {
+      "canonical_name": "Self-Pay Only",
+      "aliases": ["self pay", "self-pay", "cash pay", "private pay", "no insurance", "cash only", "out of pocket"]
+    }
+  ],
+  "geodirectory_values": [
+    "Aetna",
+    "Anthem",
+    "BlueCross BlueShield",
+    "CareFirst",
+    "Cigna",
+    "Humana",
+    "Kaiser Permanente",
+    "Magellan",
+    "Medicaid",
+    "Medicare",
+    "Tricare",
+    "UnitedHealthcare",
+    "Amerigroup",
+    "Beacon Health",
+    "Compsych",
+    "Highmark",
+    "Johns Hopkins EHP",
+    "Lyra Health",
+    "MedStar Family Choice",
+    "Molina Healthcare",
+    "Sentara Health Plans",
+    "Virginia Premier",
+    "Out-of-Network",
+    "Self-Pay Only"
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "description": "Standardized therapy specializations and approaches",
+    "last_updated": "2026-02-17",
+    "notes": "Used for matching scraped specialization data to canonical names"
+  },
+  "specializations": [
+    {
+      "canonical_name": "Anxiety",
+      "aliases": ["anxiety", "anxiety disorder", "generalized anxiety", "gad", "panic disorder", "panic attacks", "social anxiety", "phobias", "agoraphobia", "worry", "nervousness"]
+    },
+    {
+      "canonical_name": "Depression",
+      "aliases": ["depression", "depressive disorder", "major depression", "mdd", "clinical depression", "dysthymia", "persistent depressive", "seasonal depression", "sad", "mood disorder"]
+    },
+    {
+      "canonical_name": "PTSD/Trauma",
+      "aliases": ["ptsd", "trauma", "post-traumatic", "posttraumatic", "complex trauma", "cptsd", "c-ptsd", "traumatic stress", "sexual abuse", "abuse survivor", "childhood trauma", "domestic violence survivor"]
+    },
+    {
+      "canonical_name": "Couples/Marriage",
+      "aliases": ["couples", "marriage", "couples counseling", "marriage counseling", "premarital", "relationship issues", "relationship problems", "couples therapy", "marital", "infidelity", "divorce", "gottman"]
+    },
+    {
+      "canonical_name": "LGBTQ+",
+      "aliases": ["lgbtq", "lgbtq+", "lgbtqia", "gay", "lesbian", "bisexual", "transgender", "queer", "gender identity", "sexual orientation", "coming out", "gender affirming", "lgbtq affirming"]
+    },
+    {
+      "canonical_name": "Grief",
+      "aliases": ["grief", "loss", "bereavement", "mourning", "death", "grief counseling", "complicated grief", "grief and loss", "end of life"]
+    },
+    {
+      "canonical_name": "Addiction",
+      "aliases": ["addiction", "substance abuse", "substance use", "drug abuse", "alcohol", "alcoholism", "recovery", "sober", "sobriety", "dual diagnosis", "chemical dependency", "gambling addiction", "process addiction"]
+    },
+    {
+      "canonical_name": "ADHD",
+      "aliases": ["adhd", "add", "attention deficit", "attention-deficit", "hyperactivity", "executive function", "executive functioning"]
+    },
+    {
+      "canonical_name": "OCD",
+      "aliases": ["ocd", "obsessive compulsive", "obsessive-compulsive", "compulsions", "obsessions", "erp", "exposure and response"]
+    },
+    {
+      "canonical_name": "Eating Disorders",
+      "aliases": ["eating disorder", "anorexia", "bulimia", "binge eating", "body image", "disordered eating", "ed recovery", "arfid", "orthorexia"]
+    },
+    {
+      "canonical_name": "Child/Adolescent",
+      "aliases": ["child", "children", "adolescent", "teen", "teenager", "youth", "pediatric", "child therapy", "play therapy", "school issues", "behavioral issues children"]
+    },
+    {
+      "canonical_name": "Family",
+      "aliases": ["family", "family therapy", "family counseling", "family conflict", "parenting", "co-parenting", "blended family", "family systems"]
+    },
+    {
+      "canonical_name": "Anger Management",
+      "aliases": ["anger", "anger management", "rage", "anger issues", "emotional regulation", "impulse control"]
+    },
+    {
+      "canonical_name": "Life Transitions",
+      "aliases": ["life transitions", "life changes", "career change", "midlife", "adjustment", "relocation", "retirement", "empty nest", "identity", "self-esteem"]
+    },
+    {
+      "canonical_name": "Chronic Illness",
+      "aliases": ["chronic illness", "chronic pain", "medical issues", "health anxiety", "coping with illness", "disability", "chronic fatigue", "fibromyalgia", "autoimmune"]
+    },
+    {
+      "canonical_name": "Perinatal/Postpartum",
+      "aliases": ["perinatal", "postpartum", "prenatal", "pregnancy", "postpartum depression", "ppd", "maternal mental health", "infertility", "miscarriage", "pregnancy loss"]
+    },
+    {
+      "canonical_name": "Bipolar Disorder",
+      "aliases": ["bipolar", "bipolar disorder", "manic depression", "mania", "hypomania", "mood swings"]
+    },
+    {
+      "canonical_name": "Personality Disorders",
+      "aliases": ["personality disorder", "bpd", "borderline", "narcissistic", "npd", "antisocial", "avoidant personality", "dependent personality"]
+    },
+    {
+      "canonical_name": "Self-Harm",
+      "aliases": ["self-harm", "self-injury", "cutting", "self-destructive", "non-suicidal self-injury", "nssi"]
+    },
+    {
+      "canonical_name": "Stress Management",
+      "aliases": ["stress", "stress management", "burnout", "work stress", "occupational stress", "coping skills", "overwhelm"]
+    },
+    {
+      "canonical_name": "Sleep Issues",
+      "aliases": ["insomnia", "sleep", "sleep disorder", "sleep problems", "nightmares", "sleep hygiene"]
+    },
+    {
+      "canonical_name": "Autism Spectrum",
+      "aliases": ["autism", "asd", "autism spectrum", "asperger", "neurodivergent", "neurodiversity"]
+    }
+  ],
+  "therapy_approaches": [
+    {
+      "canonical_name": "CBT",
+      "full_name": "Cognitive Behavioral Therapy",
+      "aliases": ["cbt", "cognitive behavioral", "cognitive behaviour", "cognitive therapy", "behavioral therapy"]
+    },
+    {
+      "canonical_name": "DBT",
+      "full_name": "Dialectical Behavior Therapy",
+      "aliases": ["dbt", "dialectical", "dialectical behavior", "dialectical behaviour"]
+    },
+    {
+      "canonical_name": "EMDR",
+      "full_name": "Eye Movement Desensitization and Reprocessing",
+      "aliases": ["emdr", "eye movement", "desensitization and reprocessing"]
+    },
+    {
+      "canonical_name": "Psychodynamic",
+      "full_name": "Psychodynamic Therapy",
+      "aliases": ["psychodynamic", "psychoanalytic", "psychoanalysis", "depth psychology", "insight-oriented"]
+    },
+    {
+      "canonical_name": "Humanistic",
+      "full_name": "Humanistic Therapy",
+      "aliases": ["humanistic", "person-centered", "person centered", "client-centered", "rogerian", "existential"]
+    },
+    {
+      "canonical_name": "Solution-Focused",
+      "full_name": "Solution-Focused Brief Therapy",
+      "aliases": ["solution-focused", "solution focused", "sfbt", "brief therapy"]
+    },
+    {
+      "canonical_name": "ACT",
+      "full_name": "Acceptance and Commitment Therapy",
+      "aliases": ["act", "acceptance and commitment", "acceptance commitment"]
+    },
+    {
+      "canonical_name": "Mindfulness-Based",
+      "full_name": "Mindfulness-Based Therapy",
+      "aliases": ["mindfulness", "mindfulness-based", "mbsr", "mbct", "meditation", "mindfulness based stress reduction", "mindfulness based cognitive"]
+    },
+    {
+      "canonical_name": "Play Therapy",
+      "full_name": "Play Therapy",
+      "aliases": ["play therapy", "sand tray", "sandplay", "child-centered play"]
+    },
+    {
+      "canonical_name": "Art Therapy",
+      "full_name": "Art Therapy",
+      "aliases": ["art therapy", "creative arts", "expressive arts", "music therapy", "dance therapy"]
+    },
+    {
+      "canonical_name": "Somatic",
+      "full_name": "Somatic Experiencing",
+      "aliases": ["somatic", "somatic experiencing", "body-based", "sensorimotor", "somatic therapy"]
+    },
+    {
+      "canonical_name": "Gottman Method",
+      "full_name": "Gottman Method Couples Therapy",
+      "aliases": ["gottman", "gottman method", "gottman couples"]
+    },
+    {
+      "canonical_name": "IFS",
+      "full_name": "Internal Family Systems",
+      "aliases": ["ifs", "internal family systems", "parts work"]
+    },
+    {
+      "canonical_name": "EFT",
+      "full_name": "Emotionally Focused Therapy",
+      "aliases": ["eft", "emotionally focused", "emotion focused"]
+    },
+    {
+      "canonical_name": "Motivational Interviewing",
+      "full_name": "Motivational Interviewing",
+      "aliases": ["motivational interviewing", "mi"]
+    },
+    {
+      "canonical_name": "Narrative Therapy",
+      "full_name": "Narrative Therapy",
+      "aliases": ["narrative", "narrative therapy"]
+    }
+  ],
+  "geodirectory_specializations": [
+    "Anxiety", "Depression", "PTSD/Trauma", "Couples/Marriage", "LGBTQ+",
+    "Grief", "Addiction", "ADHD", "OCD", "Eating Disorders",
+    "Child/Adolescent", "Family", "Anger Management", "Life Transitions",
+    "Chronic Illness", "Perinatal/Postpartum"
+  ],
+  "geodirectory_approaches": [
+    "CBT", "DBT", "EMDR", "Psychodynamic", "Humanistic",
+    "Solution-Focused", "ACT", "Mindfulness-Based", "Play Therapy",
+    "Art Therapy", "Somatic"
+  ]
+}

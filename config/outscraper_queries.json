@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "description": "OutScraper Google Maps search queries for therapist data collection",
+    "last_updated": "2026-02-17",
+    "phase": "Phase 1 - DMV Region (DC, MD, VA)",
+    "estimated_results": "5,000-10,000 raw records"
+  },
+  "queries": [
+    {
+      "search_term": "therapist",
+      "location": "Washington DC",
+      "priority": 1
+    },
+    {
+      "search_term": "therapist",
+      "location": "Maryland",
+      "priority": 1
+    },
+    {
+      "search_term": "therapist",
+      "location": "Virginia",
+      "priority": 1
+    },
+    {
+      "search_term": "psychologist",
+      "location": "Washington DC",
+      "priority": 1
+    },
+    {
+      "search_term": "psychologist",
+      "location": "Maryland",
+      "priority": 1
+    },
+    {
+      "search_term": "psychologist",
+      "location": "Virginia",
+      "priority": 1
+    },
+    {
+      "search_term": "counselor mental health",
+      "location": "Washington DC",
+      "priority": 2
+    },
+    {
+      "search_term": "counselor mental health",
+      "location": "Maryland",
+      "priority": 2
+    },
+    {
+      "search_term": "counselor mental health",
+      "location": "Virginia",
+      "priority": 2
+    },
+    {
+      "search_term": "psychiatrist",
+      "location": "Washington DC",
+      "priority": 2
+    },
+    {
+      "search_term": "psychiatrist",
+      "location": "Maryland",
+      "priority": 2
+    },
+    {
+      "search_term": "psychiatrist",
+      "location": "Virginia",
+      "priority": 2
+    },
+    {
+      "search_term": "marriage counselor",
+      "location": "Washington DC",
+      "priority": 3
+    },
+    {
+      "search_term": "marriage counselor",
+      "location": "Maryland",
+      "priority": 3
+    },
+    {
+      "search_term": "marriage counselor",
+      "location": "Virginia",
+      "priority": 3
+    },
+    {
+      "search_term": "family therapist",
+      "location": "Washington DC",
+      "priority": 3
+    },
+    {
+      "search_term": "family therapist",
+      "location": "Maryland",
+      "priority": 3
+    },
+    {
+      "search_term": "family therapist",
+      "location": "Virginia",
+      "priority": 3
+    }
+  ],
+  "outscraper_settings": {
+    "language": "en",
+    "region": "US",
+    "limit_per_query": 500,
+    "fields": [
+      "name",
+      "full_address",
+      "street",
+      "city",
+      "state",
+      "zip_code",
+      "country_code",
+      "phone",
+      "site",
+      "rating",
+      "reviews",
+      "category",
+      "working_hours",
+      "latitude",
+      "longitude",
+      "place_id",
+      "google_id",
+      "status"
+    ]
+  }
+}
