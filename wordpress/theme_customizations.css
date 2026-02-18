@@ -1,0 +1,1053 @@
+/* ==========================================================================
+   Therapist Index — Custom Theme CSS
+   WordPress: Astra Theme + GeoDirectory 2.8.x
+   Paste into: Appearance > Customize > Additional CSS
+
+   GeoDirectory field slugs match prepare_import.py GEODIR_COLUMN_MAP:
+     geodir_accepting_new_patients, geodir_telehealth, geodir_license_type,
+     geodir_specializations, geodir_insurance_accepted, etc.
+
+   GeoDirectory front-end class convention:
+     Wrapper:  .geodir-i-{slug}    e.g. .geodir-i-telehealth
+     Row:      .geodir_{slug}_row
+     Value:    .geodir-i-{slug} .geodir-i-datum
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. GOOGLE FONTS — Load Inter (optional: paste @import FIRST)
+      If you prefer the Astra default font, delete this line.
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* --------------------------------------------------------------------------
+   2. CSS VARIABLES / DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  --ti-blue:        #2B6CB0;
+  --ti-blue-dark:   #1E4E8C;
+  --ti-blue-light:  #EBF4FF;
+  --ti-green:       #48BB78;
+  --ti-green-dark:  #38A169;
+  --ti-green-light: #F0FFF4;
+  --ti-white:       #FFFFFF;
+  --ti-gray-50:     #F7FAFC;
+  --ti-gray-100:    #EDF2F7;
+  --ti-gray-200:    #E2E8F0;
+  --ti-gray-300:    #CBD5E0;
+  --ti-gray-500:    #718096;
+  --ti-gray-700:    #2D3748;
+  --ti-gray-900:    #1A202C;
+  --ti-radius:      12px;
+  --ti-radius-sm:   8px;
+  --ti-shadow:      0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --ti-shadow-md:   0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --ti-shadow-lg:   0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.05);
+  --ti-font:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. GLOBAL TYPOGRAPHY & BODY
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--ti-font);
+  color: var(--ti-gray-700);
+  background-color: var(--ti-gray-50);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ti-gray-900);
+  font-weight: 700;
+}
+
+a {
+  color: var(--ti-blue);
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--ti-blue-dark);
+}
+
+::selection {
+  background: rgba(43,108,176,0.15);
+  color: var(--ti-gray-900);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. HEADER — Clean, minimal
+   -------------------------------------------------------------------------- */
+.site-header,
+.ast-primary-header,
+header.site-header {
+  background: var(--ti-white) !important;
+  border-bottom: 1px solid var(--ti-gray-200) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+
+/* Logo / site title */
+.site-title a,
+.ast-site-title-wrap a,
+.site-branding .site-title a {
+  color: var(--ti-blue) !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  text-decoration: none !important;
+}
+.site-title a:hover,
+.ast-site-title-wrap a:hover {
+  color: var(--ti-blue-dark) !important;
+}
+
+/* Tagline */
+.site-description {
+  color: var(--ti-gray-500) !important;
+  font-size: 0.85rem !important;
+}
+
+/* Navigation */
+.main-header-menu a,
+.ast-header-sections-navigation a,
+.main-navigation a {
+  color: var(--ti-gray-700) !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  transition: color 0.2s ease !important;
+}
+.main-header-menu a:hover,
+.main-header-menu .current-menu-item > a,
+.main-navigation a:hover {
+  color: var(--ti-blue) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HIDE "HOME" PAGE TITLE ON HOMEPAGE
+   -------------------------------------------------------------------------- */
+.home .entry-title,
+.home .page-title,
+.home .ast-archive-description,
+body.home .entry-header,
+body.page-template-default.home .entry-title {
+  display: none !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. HERO SEARCH BAR — Large, centered, prominent
+   GeoDirectory uses AyeCode UI (Bootstrap 5 based). Search forms use
+   standard .geodir-search or BS .form-control inside GD shortcode blocks.
+   -------------------------------------------------------------------------- */
+
+/* Search form wrapper (GeoDirectory search shortcode) */
+.geodir-search,
+.geodir-search-container,
+.gd-search,
+[class*="geodir_search"],
+.geodir-loop-actions .geodir-search {
+  max-width: 800px !important;
+  margin: 2.5rem auto !important;
+  padding: 2rem !important;
+  background: var(--ti-white) !important;
+  border-radius: var(--ti-radius) !important;
+  box-shadow: var(--ti-shadow-lg) !important;
+  border: 1px solid var(--ti-gray-200) !important;
+}
+
+/* Homepage hero search — even bigger */
+.home .geodir-search,
+.home .geodir-search-container,
+.home .gd-search,
+.home [class*="geodir_search"] {
+  max-width: 900px !important;
+  padding: 2.5rem 3rem !important;
+  margin: 3rem auto !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(43,108,176,0.1), 0 8px 16px rgba(0,0,0,0.06) !important;
+}
+
+/* Search input fields — standard and AyeCode UI .form-control */
+.geodir-search input[type="text"],
+.geodir-search input[type="search"],
+.geodir-search .form-control,
+.gd-search input[type="text"],
+.gd-search input[type="search"],
+.gd-search .form-control,
+[class*="geodir_search"] input[type="text"],
+[class*="geodir_search"] input[type="search"],
+[class*="geodir_search"] .form-control {
+  font-size: 1.15rem !important;
+  padding: 14px 18px !important;
+  border: 2px solid var(--ti-gray-200) !important;
+  border-radius: var(--ti-radius-sm) !important;
+  background: var(--ti-gray-50) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Homepage inputs — larger */
+.home .geodir-search input[type="text"],
+.home .geodir-search input[type="search"],
+.home .geodir-search .form-control,
+.home .gd-search input[type="text"],
+.home .gd-search input[type="search"],
+.home .gd-search .form-control {
+  font-size: 1.3rem !important;
+  padding: 16px 22px !important;
+}
+
+/* Focus state */
+.geodir-search input:focus,
+.gd-search input:focus,
+.geodir-search .form-control:focus,
+.gd-search .form-control:focus {
+  border-color: var(--ti-blue) !important;
+  box-shadow: 0 0 0 3px rgba(43,108,176,0.15) !important;
+  outline: none !important;
+  background: var(--ti-white) !important;
+}
+
+/* Search dropdowns / select2 */
+.geodir-search select,
+.gd-search select,
+.geodir-search .form-select,
+.gd-search .form-select {
+  font-size: 1.05rem !important;
+  padding: 12px 16px !important;
+  border: 2px solid var(--ti-gray-200) !important;
+  border-radius: var(--ti-radius-sm) !important;
+  background: var(--ti-gray-50) !important;
+}
+
+/* AyeCode Select2 dropdown styling */
+.select2-container--bootstrap-5 .select2-selection {
+  border: 2px solid var(--ti-gray-200) !important;
+  border-radius: var(--ti-radius-sm) !important;
+  padding: 10px 14px !important;
+  min-height: 48px !important;
+}
+.select2-container--bootstrap-5 .select2-selection:focus,
+.select2-container--bootstrap-5.select2-container--focus .select2-selection {
+  border-color: var(--ti-blue) !important;
+  box-shadow: 0 0 0 3px rgba(43,108,176,0.15) !important;
+}
+
+/* Search submit button */
+.geodir-search button[type="submit"],
+.geodir-search input[type="submit"],
+.geodir-search .geodir_submit_search,
+.gd-search button[type="submit"],
+.gd-search input[type="submit"],
+[class*="geodir_search"] button[type="submit"],
+[class*="geodir_search"] input[type="submit"] {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  padding: 14px 32px !important;
+  border: none !important;
+  border-radius: var(--ti-radius-sm) !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease !important;
+}
+.geodir-search button[type="submit"]:hover,
+.geodir-search input[type="submit"]:hover,
+.gd-search button[type="submit"]:hover,
+[class*="geodir_search"] button[type="submit"]:hover {
+  background: var(--ti-blue-dark) !important;
+  box-shadow: 0 4px 12px rgba(43,108,176,0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. LISTING CARDS — Archive / loop view
+   GeoDirectory + AyeCode UI renders cards inside .bsui wrapper.
+   Astra uses .ast-article-post for its blog/archive cards.
+   -------------------------------------------------------------------------- */
+
+/* GeoDirectory listing cards */
+.geodir-post,
+article.geodir-post,
+.geodir-category-list-view,
+.geodir-loop-container article,
+.gd-loop-container article {
+  background: var(--ti-white) !important;
+  border-radius: var(--ti-radius) !important;
+  box-shadow: var(--ti-shadow) !important;
+  border: 1px solid var(--ti-gray-100) !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
+  transition: box-shadow 0.25s ease, transform 0.2s ease !important;
+  overflow: hidden !important;
+}
+
+/* Astra-rendered listing cards (if GD uses Astra's post layout) */
+.ast-article-post .ast-article-inner,
+.ast-separate-container .ast-article-post {
+  background: var(--ti-white) !important;
+  border-radius: var(--ti-radius) !important;
+  box-shadow: var(--ti-shadow) !important;
+  border: 1px solid var(--ti-gray-100) !important;
+  padding: 1.5rem !important;
+  transition: box-shadow 0.25s ease, transform 0.2s ease !important;
+  overflow: hidden !important;
+}
+
+/* Hover lift */
+.geodir-post:hover,
+article.geodir-post:hover,
+.geodir-loop-container article:hover,
+.gd-loop-container article:hover,
+.ast-article-post:hover .ast-article-inner {
+  box-shadow: var(--ti-shadow-lg) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Card titles */
+.geodir-post .geodir-entry-title a,
+.geodir-post h2 a,
+.geodir-post h3 a,
+.ast-article-post .entry-title a {
+  color: var(--ti-gray-900) !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+.geodir-post .geodir-entry-title a:hover,
+.geodir-post h2 a:hover,
+.ast-article-post .entry-title a:hover {
+  color: var(--ti-blue) !important;
+}
+
+/* Card meta text */
+.geodir-post .geodir-post-meta,
+.geodir-post .geodir-category-info {
+  color: var(--ti-gray-500) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Card images */
+.geodir-post .geodir-post-img img,
+.geodir-post .geodir_thumbnail img,
+.ast-article-post .post-thumb-img-content img {
+  border-radius: var(--ti-radius-sm) !important;
+  object-fit: cover !important;
+}
+
+/* Grid container */
+.geodir-loop-container,
+.gd-loop-container {
+  display: grid !important;
+  gap: 1.25rem !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. BADGES — "Accepting New Patients" (green) & "Telehealth Available" (blue)
+
+   GeoDirectory renders custom fields on single listings as:
+     <div class="geodir-i-geodir_accepting_new_patients ...">
+       <span class="geodir-i-key">Accepting New Patients</span>
+       <span class="geodir-i-datum">Yes</span>
+     </div>
+
+   On archive/card views, output depends on GD template settings.
+   We target both the detail field wrappers and any badge shortcode output.
+   -------------------------------------------------------------------------- */
+
+/* --- Base badge mixin (applied to both) --- */
+.geodir-i-geodir_accepting_new_patients .geodir-i-datum,
+.geodir-i-geodir_telehealth .geodir-i-datum,
+[class*="geodir-badge"],
+[class*="gd-badge"] {
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.4 !important;
+  margin-right: 6px !important;
+  margin-bottom: 6px !important;
+}
+
+/* --- "Accepting New Patients" — GREEN badge --- */
+.geodir-i-geodir_accepting_new_patients,
+[class*="accepting_new_patients"],
+[class*="accepting-new-patients"] {
+  margin-bottom: 8px !important;
+}
+
+.geodir-i-geodir_accepting_new_patients .geodir-i-datum,
+[class*="accepting_new_patients"] .geodir-i-datum,
+[class*="accepting_new_patients"] .badge,
+.geodir-badge-accepting {
+  background: var(--ti-green-light) !important;
+  color: var(--ti-green-dark) !important;
+  border: 1px solid rgba(72,187,120,0.3) !important;
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+
+/* --- "Telehealth Available" — BLUE badge --- */
+.geodir-i-geodir_telehealth,
+[class*="telehealth_available"],
+[class*="telehealth-available"] {
+  margin-bottom: 8px !important;
+}
+
+.geodir-i-geodir_telehealth .geodir-i-datum,
+[class*="telehealth"] .geodir-i-datum,
+[class*="telehealth"] .badge,
+.geodir-badge-telehealth {
+  background: var(--ti-blue-light) !important;
+  color: var(--ti-blue) !important;
+  border: 1px solid rgba(43,108,176,0.25) !important;
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+
+/* --- License Verified — subtle green check badge --- */
+.geodir-i-geodir_license_verified .geodir-i-datum,
+[class*="license_verified"] .geodir-i-datum {
+  background: var(--ti-green-light) !important;
+  color: var(--ti-green-dark) !important;
+  border: 1px solid rgba(72,187,120,0.3) !important;
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. CUSTOM FIELD DISPLAY — Single Listing Detail View
+
+   GeoDirectory renders each custom field in a wrapper like:
+     <div class="geodir-i-geodir_insurance_accepted geodir-i-select ...">
+   -------------------------------------------------------------------------- */
+
+/* Field row styling */
+.geodir-i-geodir_specializations,
+.geodir-i-geodir_insurance_accepted,
+.geodir-i-geodir_therapy_approaches,
+.geodir-i-geodir_languages,
+.geodir-i-geodir_age_groups_served,
+.geodir-i-geodir_license_type,
+.geodir-i-geodir_license_state,
+.geodir-i-geodir_session_length,
+.geodir-i-geodir_sliding_scale,
+.geodir-i-geodir_wait_time,
+.geodir-i-geodir_years_experience,
+.geodir-i-geodir_education,
+.geodir-i-geodir_practice_name,
+.geodir-i-geodir_contact_phone,
+.geodir-i-geodir_email,
+.geodir-i-geodir_website,
+.geodir-i-geodir_price_range_min,
+.geodir-i-geodir_price_range_max,
+.geodir-i-geodir_gender {
+  padding: 10px 0 !important;
+  border-bottom: 1px solid var(--ti-gray-100) !important;
+}
+
+/* Field labels */
+.geodir-i-geodir_specializations .geodir-i-key,
+.geodir-i-geodir_insurance_accepted .geodir-i-key,
+.geodir-i-geodir_therapy_approaches .geodir-i-key,
+.geodir-i-geodir_languages .geodir-i-key,
+.geodir-i-geodir_age_groups_served .geodir-i-key,
+.geodir-i-geodir_license_type .geodir-i-key,
+.geodir-i-geodir_license_state .geodir-i-key,
+.geodir-i-geodir_license_verified .geodir-i-key,
+.geodir-i-geodir_accepting_new_patients .geodir-i-key,
+.geodir-i-geodir_telehealth .geodir-i-key,
+.geodir-i-geodir_sliding_scale .geodir-i-key,
+.geodir-i-geodir_session_length .geodir-i-key,
+.geodir-i-geodir_wait_time .geodir-i-key,
+.geodir-i-geodir_years_experience .geodir-i-key,
+.geodir-i-geodir_education .geodir-i-key,
+.geodir-i-geodir_practice_name .geodir-i-key,
+.geodir-i-geodir_contact_phone .geodir-i-key,
+.geodir-i-geodir_email .geodir-i-key,
+.geodir-i-geodir_website .geodir-i-key,
+.geodir-i-geodir_gender .geodir-i-key {
+  color: var(--ti-gray-500) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Multiselect values as pill tags (specializations, insurance, etc.) */
+.geodir-i-geodir_specializations .geodir-i-datum,
+.geodir-i-geodir_insurance_accepted .geodir-i-datum,
+.geodir-i-geodir_therapy_approaches .geodir-i-datum,
+.geodir-i-geodir_languages .geodir-i-datum,
+.geodir-i-geodir_age_groups_served .geodir-i-datum {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+}
+
+.geodir-i-geodir_specializations .geodir-i-datum a,
+.geodir-i-geodir_specializations .geodir-i-datum span,
+.geodir-i-geodir_insurance_accepted .geodir-i-datum a,
+.geodir-i-geodir_insurance_accepted .geodir-i-datum span,
+.geodir-i-geodir_therapy_approaches .geodir-i-datum a,
+.geodir-i-geodir_therapy_approaches .geodir-i-datum span,
+.geodir-i-geodir_languages .geodir-i-datum a,
+.geodir-i-geodir_languages .geodir-i-datum span,
+.geodir-i-geodir_age_groups_served .geodir-i-datum a,
+.geodir-i-geodir_age_groups_served .geodir-i-datum span {
+  background: var(--ti-gray-100) !important;
+  color: var(--ti-gray-700) !important;
+  border-radius: 20px !important;
+  padding: 3px 12px !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease !important;
+}
+.geodir-i-geodir_specializations .geodir-i-datum a:hover,
+.geodir-i-geodir_insurance_accepted .geodir-i-datum a:hover,
+.geodir-i-geodir_therapy_approaches .geodir-i-datum a:hover {
+  background: var(--ti-blue-light) !important;
+  color: var(--ti-blue) !important;
+}
+
+/* Insurance accepted — slightly different color to distinguish */
+.geodir-i-geodir_insurance_accepted .geodir-i-datum a,
+.geodir-i-geodir_insurance_accepted .geodir-i-datum span {
+  background: var(--ti-blue-light) !important;
+  color: var(--ti-blue) !important;
+}
+
+/* Price range display */
+.geodir-i-geodir_price_range_min .geodir-i-datum,
+.geodir-i-geodir_price_range_max .geodir-i-datum {
+  font-weight: 600 !important;
+  color: var(--ti-gray-900) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. SINGLE LISTING PAGE — Detail view
+   -------------------------------------------------------------------------- */
+.geodir-single,
+.single-gd_place {
+  background: var(--ti-gray-50) !important;
+}
+
+.geodir-single .geodir-wrapper,
+.geodir-single .geodir-content-area {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+.geodir-single .geodir-entry-title,
+.single-gd_place .entry-title {
+  color: var(--ti-gray-900) !important;
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Detail section cards (tabs / content blocks) */
+.geodir-tabs-content,
+.geodir-details-tab,
+.geodir-post-meta-container {
+  background: var(--ti-white) !important;
+  border-radius: var(--ti-radius) !important;
+  box-shadow: var(--ti-shadow) !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
+  border: 1px solid var(--ti-gray-100) !important;
+}
+
+/* Tab navigation */
+.geodir-tab-head,
+.geodir-tabs .geodir-tab-head {
+  border-bottom: 2px solid var(--ti-gray-200) !important;
+}
+.geodir-tab-head a,
+.geodir-tabs .geodir-tab-head a {
+  color: var(--ti-gray-500) !important;
+  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  transition: color 0.2s ease !important;
+}
+.geodir-tab-head a:hover,
+.geodir-tab-head a.is-active,
+.geodir-tab-head li.geodir-tab-active a {
+  color: var(--ti-blue) !important;
+  border-bottom: 2px solid var(--ti-blue) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. BUTTONS — Global
+   -------------------------------------------------------------------------- */
+.ast-button,
+.button,
+input[type="submit"],
+button[type="submit"],
+.wp-block-button__link,
+.geodir-button,
+.gd-btn,
+.btn-primary {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+  border: none !important;
+  border-radius: var(--ti-radius-sm) !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease !important;
+}
+.ast-button:hover,
+.button:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.wp-block-button__link:hover,
+.btn-primary:hover {
+  background: var(--ti-blue-dark) !important;
+  box-shadow: 0 4px 12px rgba(43,108,176,0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Secondary / outline */
+.button-secondary,
+.btn-outline-primary {
+  background: transparent !important;
+  color: var(--ti-blue) !important;
+  border: 2px solid var(--ti-blue) !important;
+}
+.button-secondary:hover,
+.btn-outline-primary:hover {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. SIDEBAR & WIDGETS
+   -------------------------------------------------------------------------- */
+.widget,
+aside .widget {
+  background: var(--ti-white) !important;
+  border-radius: var(--ti-radius) !important;
+  box-shadow: var(--ti-shadow) !important;
+  padding: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+  border: 1px solid var(--ti-gray-100) !important;
+}
+
+.widget-title,
+.widget h2 {
+  color: var(--ti-gray-900) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  border-bottom: 2px solid var(--ti-blue-light) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. FOOTER — Remove Astra branding, add custom text
+   -------------------------------------------------------------------------- */
+
+/* Hide "Powered by Astra" */
+.ast-footer-copyright,
+.ast-small-footer .ast-footer-copyright-content,
+.ast-small-footer .ast-footer-copyright-content p {
+  visibility: hidden !important;
+  font-size: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Footer wrapper — dark bg */
+.ast-small-footer,
+.site-footer .ast-small-footer {
+  visibility: visible !important;
+  height: auto !important;
+  background: var(--ti-gray-900) !important;
+  padding: 1.5rem 0 !important;
+  text-align: center !important;
+}
+
+/* Inject custom footer text */
+.ast-small-footer::after,
+.site-footer .ast-small-footer::after {
+  content: "\00A9  2026 Therapist Index  |  Find the right therapist near you" !important;
+  display: block !important;
+  visibility: visible !important;
+  color: var(--ti-gray-300) !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  padding: 0.75rem 1rem !important;
+  text-align: center !important;
+}
+
+/* Upper footer area */
+.site-footer,
+footer.site-footer {
+  background: var(--ti-gray-900) !important;
+  color: var(--ti-gray-300) !important;
+}
+.site-footer a {
+  color: var(--ti-gray-200) !important;
+  transition: color 0.2s ease !important;
+}
+.site-footer a:hover {
+  color: var(--ti-white) !important;
+}
+.site-footer .widget-title,
+.site-footer .widget h2 {
+  color: var(--ti-white) !important;
+  border-bottom-color: rgba(255,255,255,0.1) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   14. PAGINATION
+   -------------------------------------------------------------------------- */
+.nav-links a,
+.page-numbers,
+.geodir-pagination a,
+.ast-pagination a {
+  background: var(--ti-white) !important;
+  color: var(--ti-gray-700) !important;
+  border: 1px solid var(--ti-gray-200) !important;
+  border-radius: var(--ti-radius-sm) !important;
+  padding: 8px 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+.nav-links a:hover,
+.page-numbers:hover,
+.geodir-pagination a:hover,
+.ast-pagination a:hover {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+  border-color: var(--ti-blue) !important;
+}
+.nav-links .current,
+.page-numbers.current,
+.geodir-pagination .current,
+.ast-pagination .current {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+  border-color: var(--ti-blue) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. FORMS — Inputs, textareas (contact form, login, etc.)
+   -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+  border: 2px solid var(--ti-gray-200) !important;
+  border-radius: var(--ti-radius-sm) !important;
+  padding: 10px 14px !important;
+  font-size: 0.95rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  background: var(--ti-white) !important;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--ti-blue) !important;
+  box-shadow: 0 0 0 3px rgba(43,108,176,0.12) !important;
+  outline: none !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   16. MAP CONTAINER
+   -------------------------------------------------------------------------- */
+.geodir-map-container,
+.gd-map-container {
+  border-radius: var(--ti-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--ti-shadow-md) !important;
+  border: 1px solid var(--ti-gray-200) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   17. STAR RATINGS
+   -------------------------------------------------------------------------- */
+.geodir-star-rating,
+.gd-star-rating {
+  color: #F6AD55 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   18. BREADCRUMBS
+   -------------------------------------------------------------------------- */
+.ast-breadcrumbs,
+.geodir-breadcrumb,
+nav.breadcrumbs {
+  font-size: 0.85rem !important;
+  color: var(--ti-gray-500) !important;
+  padding: 0.75rem 0 !important;
+}
+.ast-breadcrumbs a,
+.geodir-breadcrumb a {
+  color: var(--ti-blue) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   19. HOMEPAGE HERO AREA
+   -------------------------------------------------------------------------- */
+.home .site-content,
+.home #content {
+  padding-top: 0 !important;
+}
+
+/* Hero gradient background (if using a cover block or custom section) */
+.ti-hero,
+.home .wp-block-cover,
+.home .ast-hero {
+  background: linear-gradient(135deg, var(--ti-blue-light) 0%, var(--ti-white) 100%) !important;
+  padding: 4rem 2rem !important;
+  text-align: center !important;
+  border-radius: 0 0 24px 24px !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   20. TAGS / CATEGORY PILLS
+   -------------------------------------------------------------------------- */
+.geodir-tag,
+.geodir-post-tags a,
+.gd-tag,
+.ast-terms-link a {
+  background: var(--ti-gray-100) !important;
+  color: var(--ti-gray-700) !important;
+  border-radius: 20px !important;
+  padding: 3px 12px !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  transition: background 0.2s ease !important;
+  display: inline-block !important;
+  margin: 2px 4px 2px 0 !important;
+  text-decoration: none !important;
+}
+.geodir-tag:hover,
+.geodir-post-tags a:hover,
+.ast-terms-link a:hover {
+  background: var(--ti-blue-light) !important;
+  color: var(--ti-blue) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   21. BOOTSTRAP (AyeCode UI) OVERRIDES
+   GeoDirectory 2.8+ uses AyeCode UI which is Bootstrap 5 based.
+   These ensure our design tokens override Bootstrap defaults.
+   -------------------------------------------------------------------------- */
+
+/* Cards within bsui wrapper */
+.bsui .card {
+  border-radius: var(--ti-radius) !important;
+  border: 1px solid var(--ti-gray-100) !important;
+  box-shadow: var(--ti-shadow) !important;
+}
+.bsui .card:hover {
+  box-shadow: var(--ti-shadow-lg) !important;
+}
+
+/* Bootstrap badges in bsui context */
+.bsui .badge {
+  font-weight: 600 !important;
+  font-size: 0.78rem !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+}
+.bsui .badge.bg-primary,
+.bsui .badge.bg-info {
+  background: var(--ti-blue) !important;
+}
+.bsui .badge.bg-success {
+  background: var(--ti-green) !important;
+}
+
+/* AyeCode lightbox */
+.aui-lightbox-image img,
+.aui-gallery img {
+  border-radius: var(--ti-radius-sm) !important;
+}
+
+/* AyeCode modals */
+.aui-modal .modal-content {
+  border-radius: var(--ti-radius) !important;
+  border: none !important;
+  box-shadow: var(--ti-shadow-lg) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   22. SCROLL-TO-TOP
+   -------------------------------------------------------------------------- */
+#ast-scroll-top {
+  background: var(--ti-blue) !important;
+  color: var(--ti-white) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--ti-shadow-md) !important;
+}
+#ast-scroll-top:hover {
+  background: var(--ti-blue-dark) !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   23. MOBILE RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 921px) {
+  /* Mobile header */
+  .ast-mobile-header-wrap,
+  .ast-header-break-point .site-header {
+    background: var(--ti-white) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+  }
+
+  /* Hamburger menu */
+  .ast-mobile-menu-trigger-minimal,
+  .ast-button-wrap .menu-toggle {
+    color: var(--ti-blue) !important;
+  }
+
+  /* Mobile search */
+  .home .geodir-search,
+  .home .gd-search,
+  .home [class*="geodir_search"] {
+    padding: 1.5rem 1.25rem !important;
+    margin: 1.5rem 0.75rem !important;
+  }
+  .home .geodir-search input[type="text"],
+  .home .geodir-search input[type="search"],
+  .home .geodir-search .form-control,
+  .home .gd-search input[type="text"],
+  .home .gd-search .form-control {
+    font-size: 1.05rem !important;
+    padding: 12px 14px !important;
+  }
+
+  /* Mobile listing cards */
+  .geodir-post,
+  article.geodir-post,
+  .ast-article-post .ast-article-inner {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: var(--ti-radius-sm) !important;
+  }
+
+  /* Single column on mobile */
+  .geodir-loop-container,
+  .gd-loop-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Smaller title on single listing */
+  .geodir-single .geodir-entry-title,
+  .single-gd_place .entry-title {
+    font-size: 1.4rem !important;
+  }
+}
+
+@media (max-width: 544px) {
+  /* Extra small */
+  .home .geodir-search,
+  .home .gd-search,
+  .home [class*="geodir_search"] {
+    padding: 1.25rem 1rem !important;
+    margin: 1rem 0.5rem !important;
+  }
+
+  .geodir-post .geodir-entry-title a,
+  .ast-article-post .entry-title a {
+    font-size: 1.05rem !important;
+  }
+
+  /* Full-width search button on mobile */
+  .geodir-search button[type="submit"],
+  .gd-search button[type="submit"],
+  [class*="geodir_search"] button[type="submit"],
+  [class*="geodir_search"] input[type="submit"] {
+    width: 100% !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Stack badges vertically */
+  .geodir-i-geodir_accepting_new_patients,
+  .geodir-i-geodir_telehealth,
+  .geodir-i-geodir_license_verified {
+    display: block !important;
+    margin-bottom: 6px !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   24. PRINT STYLES (nice-to-have for therapist info printing)
+   -------------------------------------------------------------------------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .geodir-search,
+  #ast-scroll-top,
+  .ast-breadcrumbs {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .geodir-post,
+  .geodir-tabs-content {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
