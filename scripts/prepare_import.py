@@ -91,17 +91,24 @@ def generate_slug(name: str, city: str, state: str) -> str:
     return "-".join(parts)
 
 
+def _safe_str(val) -> str:
+    """Convert a value to string, treating NaN/None as empty string."""
+    if pd.isna(val):
+        return ""
+    return str(val)
+
+
 def generate_description(row: pd.Series) -> str:
     """Generate a post description/excerpt for the listing."""
     parts = []
 
-    name = row.get("therapist_name", "")
-    city = row.get("city", "")
-    state = row.get("state", "")
-    license_type = row.get("license_type", "")
-    specializations = row.get("specializations", "")
-    insurance = row.get("insurance_accepted", "")
-    telehealth = row.get("telehealth", "")
+    name = _safe_str(row.get("therapist_name", ""))
+    city = _safe_str(row.get("city", ""))
+    state = _safe_str(row.get("state", ""))
+    license_type = _safe_str(row.get("license_type", ""))
+    specializations = _safe_str(row.get("specializations", ""))
+    insurance = _safe_str(row.get("insurance_accepted", ""))
+    telehealth = _safe_str(row.get("telehealth", ""))
 
     if name:
         intro = name
@@ -127,7 +134,7 @@ def generate_description(row: pd.Series) -> str:
     if telehealth and telehealth not in ("No", "Unknown", ""):
         parts.append("Telehealth available.")
 
-    accepting = row.get("accepting_new_patients", "")
+    accepting = _safe_str(row.get("accepting_new_patients", ""))
     if accepting == "Yes":
         parts.append("Currently accepting new patients.")
 

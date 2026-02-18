@@ -17,10 +17,18 @@ Usage:
 import argparse
 import asyncio
 import json
+import os
 import re
 import sys
 import time
 from pathlib import Path
+
+# Fix Windows encoding issues with Crawl4AI's Rich console (unicode arrows etc.)
+os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+
+# Fix Windows asyncio event loop policy for subprocess handling
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 import pandas as pd
 
@@ -229,7 +237,7 @@ async def process_batch(
 ) -> list[dict]:
     """Process a batch of therapist websites concurrently."""
     try:
-        from crawl4ai import AsyncWebCrawler
+        from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, BrowserConfig
     except ImportError:
         logger.error(
             "crawl4ai not installed. Run: pip install crawl4ai"
@@ -240,7 +248,8 @@ async def process_batch(
     batch = df.iloc[start_idx:end_idx]
     results = []
 
-    async with AsyncWebCrawler(verbose=False) as crawler:
+    browser_cfg = BrowserConfig(headless=True, verbose=False)
+    async with AsyncWebCrawler(config=browser_cfg, verbose=False) as crawler:
         for idx, row in batch.iterrows():
             url = row.get("website", "")
             name = row.get("therapist_name", "unknown")
@@ -249,7 +258,7 @@ async def process_batch(
                 results.append({field: "" for field in ENRICHMENT_FIELDS})
                 continue
 
-            logger.info(f"  [{idx + 1}/{len(df)}] Crawling: {name} — {url}")
+            logger.info(f"  [{idx + 1}/{len(df)}] Crawling: {name} - {url}")
 
             text = await crawl_website(url, crawler)
             if text is None:
