@@ -603,3 +603,86 @@ function ti_seo_title_gd_place( $title ) {
 
     return $name . ' — ' . $middle . ' | Therapist Index';
 }
+
+
+/**
+ * ========================================================================
+ * 9. SEO META DESCRIPTION OVERRIDE FOR gd_place LISTINGS
+ *
+ * Replaces the default Yoast meta description with:
+ * "[Name] specializes in [Spec1], [Spec2] & [Spec3] therapy in [City], [State].
+ *  View insurance, availability, contact info & more on Therapist Index."
+ *
+ * Fallbacks:
+ *   - No specializations → "[Name] is a therapist in [City], [State]. ..."
+ *   - No city            → "[Name] — View specialties, insurance, availability
+ *                           & contact info on Therapist Index."
+ * ========================================================================
+ */
+
+add_filter( 'wpseo_metadesc', 'ti_seo_metadesc_gd_place', 20 );
+
+function ti_seo_metadesc_gd_place( $desc ) {
+    if ( ! is_singular( 'gd_place' ) ) {
+        return $desc;
+    }
+
+    $post_id = get_queried_object_id();
+    if ( ! $post_id ) {
+        return $desc;
+    }
+
+    $name = get_the_title( $post_id );
+    if ( ! $name ) {
+        return $desc;
+    }
+
+    $city   = geodir_get_post_meta( $post_id, 'city', true );
+    $region = geodir_get_post_meta( $post_id, 'region', true );
+    $specs  = geodir_get_post_meta( $post_id, 'specializations', true );
+
+    // Build the specialization fragment (first 3 for descriptions — more room)
+    $spec_part = '';
+    if ( ! empty( $specs ) ) {
+        $spec_list = array_map( 'trim', explode( ',', $specs ) );
+        $spec_list = array_filter( $spec_list );
+        $spec_list = array_values( $spec_list );
+
+        if ( count( $spec_list ) >= 3 ) {
+            $spec_part = $spec_list[0] . ', ' . $spec_list[1] . ' & ' . $spec_list[2];
+        } elseif ( count( $spec_list ) === 2 ) {
+            $spec_part = $spec_list[0] . ' & ' . $spec_list[1];
+        } elseif ( count( $spec_list ) === 1 ) {
+            $spec_part = $spec_list[0];
+        }
+    }
+
+    // Build the location fragment
+    $location_part = '';
+    if ( ! empty( $city ) && ! empty( $region ) ) {
+        $location_part = $city . ', ' . $region;
+    } elseif ( ! empty( $city ) ) {
+        $location_part = $city;
+    } elseif ( ! empty( $region ) ) {
+        $location_part = $region;
+    }
+
+    $cta = 'View insurance, availability, contact info & more on Therapist Index.';
+
+    // No location — minimal fallback
+    if ( empty( $location_part ) ) {
+        return $name . ' — View specialties, insurance, availability & contact info on Therapist Index.';
+    }
+
+    // Build the opening sentence
+    if ( ! empty( $spec_part ) ) {
+        $opener = $name . ' specializes in ' . $spec_part . ' therapy in ' . $location_part . '.';
+    } else {
+        $opener = $name . ' is a therapist in ' . $location_part . '.';
+    }
+
+    return $opener . ' ' . $cta;
+}
+
+// Keep og:description in sync with the meta description
+add_filter( 'wpseo_opengraph_desc', 'ti_seo_metadesc_gd_place', 20 );
